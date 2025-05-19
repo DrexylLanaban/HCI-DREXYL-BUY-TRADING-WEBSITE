@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoomForge HQ Guilds</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B0000',
+            secondary: '#D4AF37'
+          },
+          borderRadius: {
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+background-color: #0a0a0a;
+color: #e0e0e0;
+font-family: 'Cinzel', serif;
+}
+
+
+@keyframes flickerLight {
+    0% {
+        color: #FFA500; /* Orange */
+        text-shadow: 0 0 5px #FF4500, 0 0 10px #FF6347; /* Light orange to red */
+    }
+    50% {
+        color: #FFD700; /* Yellow */
+        text-shadow: 0 0 5px #FFD700, 0 0 15px #FF8C00; /* Yellow to light orange */
+    }
+    100% {
+        color: #FFA500; /* Back to orange */
+        text-shadow: 0 0 5px #FF4500, 0 0 10px #FF6347; /* Light orange to red */
+    }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { text-shadow: 0 0 4px #ff4d00, 0 0 12px #ff4d00; }
+  50% { text-shadow: 0 0 8px #ff6600, 0 0 20px #ff2200; }
+}
+
+.legendaryFlicker-title {
+  font-size: 2.5rem; /* Adjust as necessary */
+  font-family: 'MedievalSharp', cursive; /* Gothic font */
+  font-weight: bold;
+  animation: flickerLight 1.5s infinite alternate; /* Apply the flickering effect */
+}
+
+.medieval-font {
+font-family: 'MedievalSharp', cursive;
+}
+
+.medieval-frame {
+border: 12px solid transparent;
+border-image: url('') 30 stretch;
+}
+.guild-card {
+background: linear-gradient(to bottom, #3a2a1d, #1a1410);
+border: 2px solid #8B6914;
+box-shadow: 0 0 15px rgba(139, 105, 20, 0.5);
+}
+.guild-card:hover {
+box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+border-color: #D4AF37;
+}
+.chat-container {
+background: linear-gradient(to bottom, #2a1a10, #1a0a05);
+border: 2px solid #8B6914;
+}
+.info-panel {
+background: linear-gradient(to bottom, #2a1a10, #1a0a05);
+border: 2px solid #8B6914;
+}
+.chat-message {
+background-color: rgba(30, 20, 10, 0.7);
+border-left: 3px solid #8B6914;
+}
+.member-row:nth-child(odd) {
+background-color: rgba(30, 20, 10, 0.7);
+}
+.member-row:nth-child(even) {
+background-color: rgba(50, 30, 20, 0.7);
+}
+.member-row:hover {
+background-color: rgba(70, 50, 30, 0.7);
+}
+.medieval-button {
+background: linear-gradient(to bottom, #8B6914, #614910);
+border: 1px solid #D4AF37;
+color: #F8F0E3;
+text-shadow: 1px 1px 2px #000;
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+transition: all 0.2s ease;
+}
+.medieval-button:hover {
+background: linear-gradient(to bottom, #D4AF37, #8B6914);
+transform: translateY(-2px);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+.medieval-button:active {
+transform: translateY(1px);
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.join-button {
+background: linear-gradient(to bottom, #8B0000, #5A0000);
+border: 1px solid #D40000;
+color: #F8F0E3;
+text-shadow: 1px 1px 2px #000;
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+transition: all 0.2s ease;
+}
+.join-button:hover {
+background: linear-gradient(to bottom, #D40000, #8B0000);
+transform: translateY(-2px);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+.join-button:active {
+transform: translateY(1px);
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.chat-input {
+background-color: rgba(30, 20, 10, 0.7);
+border: 1px solid #8B6914;
+color: #F8F0E3;
+}
+.chat-input:focus {
+border-color: #D4AF37;
+outline: none;
+box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+.scrollbar::-webkit-scrollbar {
+width: 8px;
+}
+.scrollbar::-webkit-scrollbar-track {
+background: rgba(30, 20, 10, 0.5);
+}
+.scrollbar::-webkit-scrollbar-thumb {
+background: #8B6914;
+border-radius: 4px;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+background: #D4AF37;
+}
+</style>
+</head>
+<body>
+    <!-- Fullscreen GIF Background -->
+    <div class="fixed top-0 left-0 w-full h-full z-[-1]">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="jean-conquer-the-dragonspine-genshin-impact-moewalls-com.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+    </div>
+  
+    <!-- Optional dark overlay -->
+    <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-0"></div>
+  
+    <!-- Main Content -->
+    <div class="min-h-screen flex flex-col relative z-10">
+     <!-- Header -->
+<header class="w-full h-64 relative">
+    <!-- Centered Title + Logo -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-center">
+      <h1 class="legendaryFlicker-title medieval-font">DoomForge HQ Guilds</h1>
+      <img src="ShieldGIFFY-unscreen.gif" alt="Guild Logo" class="w-24 h-24 object-contain mt-1" />
+    </div>
+  
+    <!-- Back Button -->
+    <div class="absolute top-4 left-4 z-30">
+        <a href="HomeAQ.html">
+            <button class="px-4 py-2 rounded-button flex items-center space-x-2 bg-primary text-white border border-secondary shadow-md">
+              <i class="ri-arrow-left-line"></i>
+              <span>Go Back to Home Page</span>
+            </button>
+          </a>
+    </div>
+      </header>   
+<!-- Main content -->
+<main class="flex-1 flex">
+<!-- Left sidebar - Chat -->
+<div class="w-1/4 p-4">
+<div class="chat-container h-full rounded p-4 flex flex-col">
+<h2 class="text-xl font-bold mb-4 text-center text-amber-300">Guild Chat</h2>
+<!-- Chat messages -->
+<div class="flex-1 overflow-y-auto mb-4 scrollbar">
+<div class="space-y-4">
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">DragonSlayer92</div>
+<div>Anyone up for the raid tonight? Need a tank and healer.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">ShadowBlade</div>
+<div>I can join as DPS. Got my new gear yesterday.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">HealingLight</div>
+<div>I'll be your healer. Just give me 10 mins to finish my daily quests.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">IronShield</div>
+<div>Tank reporting for duty! Let's meet at the north gate.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">DragonSlayer92</div>
+<div>Perfect! We'll start at 9 PM server time.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">ArcaneMaster</div>
+<div>Anyone have spare potions? I'm running low after yesterday's dungeon.</div>
+</div>
+<div class="chat-message p-2 rounded">
+<div class="font-bold text-amber-300">CraftingQueen</div>
+<div>I can make you some. Meet me at the guild hall in 5.</div>
+</div>
+</div>
+</div>
+<!-- Chat input -->
+<div class="mt-auto">
+<div class="flex">
+<input type="text" class="chat-input flex-1 px-3 py-2 rounded-l-button border-none" placeholder="Type your message...">
+<button class="medieval-button px-4 py-2 rounded-r-button">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-send-plane-fill"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Center - Guild List -->
+<div class="w-2/4 p-4">
+<div class="space-y-4">
+<!-- Guild 1 -->
+<div class="guild-card rounded p-4 flex items-center cursor-pointer" onclick="showGuildInfo(1)">
+<div class="w-16 h-16 mr-4 relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=red%2520dragon%2520with%2520crossed%2520swords%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild1&orientation=squarish');"></div>
+<div class="absolute -top-2 -left-2 w-8 h-8 bg-contain bg-center bg-no-repeat" style="background-image: url('phflag-removebg-preview.png');"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-red-500">Crimson Vanguard</h3>
+<div class="text-amber-300">Level 85</div>
+</div>
+<p class="text-gray-400 text-sm">Elite warriors sworn to protect the realm</p>
+</div>
+<button class="medieval-button px-3 py-1 rounded-button text-sm">Check Guild</button>
+</div>
+<!-- Guild 2 -->
+<div class="guild-card rounded p-4 flex items-center cursor-pointer" onclick="showGuildInfo(2)">
+<div class="w-16 h-16 mr-4 relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=wolf%2520pack%2520howling%2520at%2520moon%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild2&orientation=squarish');"></div>
+<div class="absolute -top-2 -left-2 w-8 h-8 bg-contain bg-center bg-no-repeat" style="background-image: url('phflag-removebg-preview.png');"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-blue-400">Shadow Wolves</h3>
+<div class="text-amber-300">Level 72</div>
+</div>
+<p class="text-gray-400 text-sm">Masters of stealth and night operations</p>
+</div>
+<button class="medieval-button px-3 py-1 rounded-button text-sm">Check Guild</button>
+</div>
+<!-- Guild 3 -->
+<div class="guild-card rounded p-4 flex items-center cursor-pointer" onclick="showGuildInfo(3)">
+<div class="w-16 h-16 mr-4 relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=phoenix%2520rising%2520from%2520flames%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild3&orientation=squarish');"></div>
+<div class="absolute -top-2 -left-2 w-8 h-8 bg-contain bg-center bg-no-repeat" style="background-image: url('phflag-removebg-preview.png');"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-orange-500">Phoenix Ascendant</h3>
+<div class="text-amber-300">Level 90</div>
+</div>
+<p class="text-gray-400 text-sm">Rising from the ashes to conquer all</p>
+</div>
+<button class="medieval-button px-3 py-1 rounded-button text-sm">Check Guild</button>
+</div>
+<!-- Guild 4 -->
+<div class="guild-card rounded p-4 flex items-center cursor-pointer" onclick="showGuildInfo(4)">
+<div class="w-16 h-16 mr-4 relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=arcane%2520circle%2520with%2520magical%2520runes%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild4&orientation=squarish');"></div>
+<div class="absolute -top-2 -left-2 w-8 h-8 bg-contain bg-center bg-no-repeat" style="background-image: url('phflag-removebg-preview.png');"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-purple-400">Arcane Covenant</h3>
+<div class="text-amber-300">Level 68</div>
+</div>
+<p class="text-gray-400 text-sm">Wielders of ancient and forbidden magic</p>
+</div>
+<button class="medieval-button px-3 py-1 rounded-button text-sm">Check Guild</button>
+</div>
+<!-- Guild 5 -->
+<div class="guild-card rounded p-4 flex items-center cursor-pointer" onclick="showGuildInfo(5)">
+<div class="w-16 h-16 mr-4 relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=iron%2520fist%2520in%2520mountain%2520fortress%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild5&orientation=squarish');"></div>
+<div class="absolute -top-2 -left-2 w-8 h-8 bg-contain bg-center bg-no-repeat" style="background-image: url('phflag-removebg-preview.png');"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-gray-300">Iron Dynasty</h3>
+<div class="text-amber-300">Level 78</div>
+</div>
+<p class="text-gray-400 text-sm">Forged in battle, unbreakable in spirit</p>
+</div>
+<button class="medieval-button px-3 py-1 rounded-button text-sm">Check Guild</button>
+</div>
+</div>
+</div>
+<!-- Right sidebar - Guild Info -->
+<div class="w-1/4 p-4">
+<div id="guild-info-panel" class="info-panel h-full rounded p-4 flex flex-col">
+<div class="text-center mb-6">
+<h2 class="text-xl font-bold text-amber-300">Select a Guild</h2>
+<p class="text-gray-400 text-sm">Click on any guild to view details</p>
+</div>
+<div class="flex-1 flex items-center justify-center">
+<div class="text-center text-gray-500">
+<div class="w-12 h-12 mx-auto flex items-center justify-center">
+<i class="ri-shield-line ri-3x"></i>
+</div>
+<p class="mt-2">Guild information will appear here</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="py-4 text-center text-gray-500 text-sm border-t border-gray-800">
+<p>© 2025 Project By: Drexyl Lanaban. Items are virtual and for in-game use only.</p>
+</footer>
+</div>
+<!-- Guild info templates (hidden) -->
+<template id="guild-template-1">
+<div class="flex flex-col h-full">
+<div class="text-center mb-4">
+<div class="w-20 h-20 mx-auto bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=red%2520dragon%2520with%2520crossed%2520swords%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild1&orientation=squarish');"></div>
+<h2 class="text-2xl font-bold text-red-500 mt-2">Crimson Vanguard</h2>
+<div class="flex justify-center items-center mt-1">
+<div class="text-amber-300 mr-4">Level 85</div>
+<div class="text-gray-400">Members: 18/20</div>
+</div>
+<p class="text-gray-300 mt-2">Elite warriors sworn to protect the realm</p>
+</div>
+<div class="mb-4 p-3 bg-black bg-opacity-30 rounded">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-star-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Guild Leader:</span>
+<span class="ml-2">ImperialKnight</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shield-check-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Requirements:</span>
+<span class="ml-2">Level 70+</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar mb-4">
+<h3 class="text-lg font-bold text-amber-300 mb-2">Members</h3>
+<div class="border border-amber-900 rounded overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-amber-900 bg-opacity-50">
+<th class="py-2 px-2 text-left">Rank</th>
+<th class="py-2 px-2 text-left">Name</th>
+<th class="py-2 px-2 text-right">Level</th>
+<th class="py-2 px-2 text-right">Gold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-vip-crown-fill text-amber-300"></i>
+</div>
+</td>
+<td class="py-2 px-2">ImperialKnight</td>
+<td class="py-2 px-2 text-right">92</td>
+<td class="py-2 px-2 text-right text-amber-300">1,250,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">DragonSlayer92</td>
+<td class="py-2 px-2 text-right">88</td>
+<td class="py-2 px-2 text-right text-amber-300">980,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ShadowBlade</td>
+<td class="py-2 px-2 text-right">85</td>
+<td class="py-2 px-2 text-right text-amber-300">850,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-shield-fill text-green-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">IronShield</td>
+<td class="py-2 px-2 text-right">83</td>
+<td class="py-2 px-2 text-right text-amber-300">720,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-heart-fill text-red-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">HealingLight</td>
+<td class="py-2 px-2 text-right">81</td>
+<td class="py-2 px-2 text-right text-amber-300">650,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ArcaneMaster</td>
+<td class="py-2 px-2 text-right">78</td>
+<td class="py-2 px-2 text-right text-amber-300">580,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">CraftingQueen</td>
+<td class="py-2 px-2 text-right">76</td>
+<td class="py-2 px-2 text-right text-amber-300">920,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-auto">
+<button class="join-button w-full py-3 rounded-button flex items-center justify-center space-x-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-user-line"></i>
+</div>
+<span>Join Guild</span>
+</button>
+</div>
+</div>
+</template>
+<template id="guild-template-2">
+<div class="flex flex-col h-full">
+<div class="text-center mb-4">
+<div class="w-20 h-20 mx-auto bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=wolf%2520pack%2520howling%2520at%2520moon%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild2&orientation=squarish');"></div>
+<h2 class="text-2xl font-bold text-blue-400 mt-2">Shadow Wolves</h2>
+<div class="flex justify-center items-center mt-1">
+<div class="text-amber-300 mr-4">Level 72</div>
+<div class="text-gray-400">Members: 15/20</div>
+</div>
+<p class="text-gray-300 mt-2">Masters of stealth and night operations</p>
+</div>
+<div class="mb-4 p-3 bg-black bg-opacity-30 rounded">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-star-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Guild Leader:</span>
+<span class="ml-2">NightStalker</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shield-check-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Requirements:</span>
+<span class="ml-2">Level 60+</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar mb-4">
+<h3 class="text-lg font-bold text-amber-300 mb-2">Members</h3>
+<div class="border border-amber-900 rounded overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-amber-900 bg-opacity-50">
+<th class="py-2 px-2 text-left">Rank</th>
+<th class="py-2 px-2 text-left">Name</th>
+<th class="py-2 px-2 text-right">Level</th>
+<th class="py-2 px-2 text-right">Gold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-vip-crown-fill text-amber-300"></i>
+</div>
+</td>
+<td class="py-2 px-2">NightStalker</td>
+<td class="py-2 px-2 text-right">85</td>
+<td class="py-2 px-2 text-right text-amber-300">950,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">SilentAssassin</td>
+<td class="py-2 px-2 text-right">80</td>
+<td class="py-2 px-2 text-right text-amber-300">820,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">VenomStrike</td>
+<td class="py-2 px-2 text-right">78</td>
+<td class="py-2 px-2 text-right text-amber-300">780,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ShadowDancer</td>
+<td class="py-2 px-2 text-right">75</td>
+<td class="py-2 px-2 text-right text-amber-300">650,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">MoonRunner</td>
+<td class="py-2 px-2 text-right">72</td>
+<td class="py-2 px-2 text-right text-amber-300">580,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">DuskBlade</td>
+<td class="py-2 px-2 text-right">68</td>
+<td class="py-2 px-2 text-right text-amber-300">480,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-auto">
+<button class="join-button w-full py-3 rounded-button flex items-center justify-center space-x-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-user-line"></i>
+</div>
+<span>Join Guild</span>
+</button>
+</div>
+</div>
+</template>
+<template id="guild-template-3">
+<div class="flex flex-col h-full">
+<div class="text-center mb-4">
+<div class="w-20 h-20 mx-auto bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=phoenix%2520rising%2520from%2520flames%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild3&orientation=squarish');"></div>
+<h2 class="text-2xl font-bold text-orange-500 mt-2">Phoenix Ascendant</h2>
+<div class="flex justify-center items-center mt-1">
+<div class="text-amber-300 mr-4">Level 90</div>
+<div class="text-gray-400">Members: 20/20</div>
+</div>
+<p class="text-gray-300 mt-2">Rising from the ashes to conquer all</p>
+</div>
+<div class="mb-4 p-3 bg-black bg-opacity-30 rounded">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-star-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Guild Leader:</span>
+<span class="ml-2">BlazingEmperor</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shield-check-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Requirements:</span>
+<span class="ml-2">Level 75+</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar mb-4">
+<h3 class="text-lg font-bold text-amber-300 mb-2">Members</h3>
+<div class="border border-amber-900 rounded overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-amber-900 bg-opacity-50">
+<th class="py-2 px-2 text-left">Rank</th>
+<th class="py-2 px-2 text-left">Name</th>
+<th class="py-2 px-2 text-right">Level</th>
+<th class="py-2 px-2 text-right">Gold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-vip-crown-fill text-amber-300"></i>
+</div>
+</td>
+<td class="py-2 px-2">BlazingEmperor</td>
+<td class="py-2 px-2 text-right">95</td>
+<td class="py-2 px-2 text-right text-amber-300">1,500,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">InfernoKnight</td>
+<td class="py-2 px-2 text-right">92</td>
+<td class="py-2 px-2 text-right text-amber-300">1,250,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">AshWarrior</td>
+<td class="py-2 px-2 text-right">90</td>
+<td class="py-2 px-2 text-right text-amber-300">1,100,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-shield-fill text-green-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">FlameTank</td>
+<td class="py-2 px-2 text-right">88</td>
+<td class="py-2 px-2 text-right text-amber-300">980,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-heart-fill text-red-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">EmberHealer</td>
+<td class="py-2 px-2 text-right">86</td>
+<td class="py-2 px-2 text-right text-amber-300">920,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">PhoenixArcher</td>
+<td class="py-2 px-2 text-right">84</td>
+<td class="py-2 px-2 text-right text-amber-300">850,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">BlazeSummoner</td>
+<td class="py-2 px-2 text-right">82</td>
+<td class="py-2 px-2 text-right text-amber-300">780,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-auto">
+<button class="join-button w-full py-3 rounded-button flex items-center justify-center space-x-2 opacity-50 cursor-not-allowed">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-user-line"></i>
+</div>
+<span>Guild Full</span>
+</button>
+</div>
+</div>
+</template>
+<template id="guild-template-4">
+<div class="flex flex-col h-full">
+<div class="text-center mb-4">
+<div class="w-20 h-20 mx-auto bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=arcane%2520circle%2520with%2520magical%2520runes%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild4&orientation=squarish');"></div>
+<h2 class="text-2xl font-bold text-purple-400 mt-2">Arcane Covenant</h2>
+<div class="flex justify-center items-center mt-1">
+<div class="text-amber-300 mr-4">Level 68</div>
+<div class="text-gray-400">Members: 12/20</div>
+</div>
+<p class="text-gray-300 mt-2">Wielders of ancient and forbidden magic</p>
+</div>
+<div class="mb-4 p-3 bg-black bg-opacity-30 rounded">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-star-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Guild Leader:</span>
+<span class="ml-2">MysticSage</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shield-check-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Requirements:</span>
+<span class="ml-2">Level 55+</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar mb-4">
+<h3 class="text-lg font-bold text-amber-300 mb-2">Members</h3>
+<div class="border border-amber-900 rounded overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-amber-900 bg-opacity-50">
+<th class="py-2 px-2 text-left">Rank</th>
+<th class="py-2 px-2 text-left">Name</th>
+<th class="py-2 px-2 text-right">Level</th>
+<th class="py-2 px-2 text-right">Gold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-vip-crown-fill text-amber-300"></i>
+</div>
+</td>
+<td class="py-2 px-2">MysticSage</td>
+<td class="py-2 px-2 text-right">80</td>
+<td class="py-2 px-2 text-right text-amber-300">920,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">RuneWeaver</td>
+<td class="py-2 px-2 text-right">75</td>
+<td class="py-2 px-2 text-right text-amber-300">780,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">SpellBinder</td>
+<td class="py-2 px-2 text-right">72</td>
+<td class="py-2 px-2 text-right text-amber-300">650,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ArcaneApprentice</td>
+<td class="py-2 px-2 text-right">65</td>
+<td class="py-2 px-2 text-right text-amber-300">480,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ElementalWizard</td>
+<td class="py-2 px-2 text-right">62</td>
+<td class="py-2 px-2 text-right text-amber-300">420,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ManaSeeker</td>
+<td class="py-2 px-2 text-right">58</td>
+<td class="py-2 px-2 text-right text-amber-300">320,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-auto">
+<button class="join-button w-full py-3 rounded-button flex items-center justify-center space-x-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-user-line"></i>
+</div>
+<span>Join Guild</span>
+</button>
+</div>
+</div>
+</template>
+<template id="guild-template-5">
+<div class="flex flex-col h-full">
+<div class="text-center mb-4">
+<div class="w-20 h-20 mx-auto bg-contain bg-center bg-no-repeat" style="background-image: url('https://readdy.ai/api/search-image?query=iron%2520fist%2520in%2520mountain%2520fortress%2520emblem%2520fantasy%2520guild%2520logo%2520detailed%2520illustration%2520isolated%2520on%2520transparent%2520background&width=80&height=80&seq=guild5&orientation=squarish');"></div>
+<h2 class="text-2xl font-bold text-gray-300 mt-2">Iron Dynasty</h2>
+<div class="flex justify-center items-center mt-1">
+<div class="text-amber-300 mr-4">Level 78</div>
+<div class="text-gray-400">Members: 16/20</div>
+</div>
+<p class="text-gray-300 mt-2">Forged in battle, unbreakable in spirit</p>
+</div>
+<div class="mb-4 p-3 bg-black bg-opacity-30 rounded">
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-star-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Guild Leader:</span>
+<span class="ml-2">SteelCommander</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shield-check-fill text-amber-300"></i>
+</div>
+<span class="text-amber-300">Requirements:</span>
+<span class="ml-2">Level 65+</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar mb-4">
+<h3 class="text-lg font-bold text-amber-300 mb-2">Members</h3>
+<div class="border border-amber-900 rounded overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-amber-900 bg-opacity-50">
+<th class="py-2 px-2 text-left">Rank</th>
+<th class="py-2 px-2 text-left">Name</th>
+<th class="py-2 px-2 text-right">Level</th>
+<th class="py-2 px-2 text-right">Gold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-vip-crown-fill text-amber-300"></i>
+</div>
+</td>
+<td class="py-2 px-2">SteelCommander</td>
+<td class="py-2 px-2 text-right">88</td>
+<td class="py-2 px-2 text-right text-amber-300">1,050,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">IronHammer</td>
+<td class="py-2 px-2 text-right">85</td>
+<td class="py-2 px-2 text-right text-amber-300">920,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-sword-fill text-blue-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">MountainBreaker</td>
+<td class="py-2 px-2 text-right">82</td>
+<td class="py-2 px-2 text-right text-amber-300">850,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-shield-fill text-green-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">StoneWall</td>
+<td class="py-2 px-2 text-right">80</td>
+<td class="py-2 px-2 text-right text-amber-300">780,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-heart-fill text-red-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">MetalMender</td>
+<td class="py-2 px-2 text-right">78</td>
+<td class="py-2 px-2 text-right text-amber-300">720,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">SteelArcher</td>
+<td class="py-2 px-2 text-right">75</td>
+<td class="py-2 px-2 text-right text-amber-300">650,000</td>
+</tr>
+<tr class="member-row">
+<td class="py-2 px-2 flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-user-fill text-gray-400"></i>
+</div>
+</td>
+<td class="py-2 px-2">ForgeApprentice</td>
+<td class="py-2 px-2 text-right">68</td>
+<td class="py-2 px-2 text-right text-amber-300">520,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-auto">
+<button class="join-button w-full py-3 rounded-button flex items-center justify-center space-x-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-shield-user-line"></i>
+</div>
+<span>Join Guild</span>
+</button>
+</div>
+</div>
+</template>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Function to show guild info
+window.showGuildInfo = function(guildId) {
+const template = document.getElementById(`guild-template-${guildId}`);
+const infoPanel = document.getElementById('guild-info-panel');
+if (template && infoPanel) {
+infoPanel.innerHTML = template.innerHTML;
+// Add event listener to join button after content is loaded
+const joinButton = infoPanel.querySelector('.join-button');
+if (joinButton && !joinButton.classList.contains('cursor-not-allowed')) {
+joinButton.addEventListener('click', function() {
+const guildName = infoPanel.querySelector('h2').textContent;
+const requirements = infoPanel.querySelector('.text-amber-300 + span').textContent;
+showJoinConfirmation(guildName, requirements, joinButton);
+});
+}
+}
+// Highlight selected guild
+document.querySelectorAll('.guild-card').forEach((card, index) => {
+if (index + 1 === guildId) {
+card.classList.add('border-amber-500');
+card.classList.add('border-2');
+} else {
+card.classList.remove('border-amber-500');
+card.classList.remove('border-2');
+}
+});
+};
+// Function to show join confirmation modal
+function showJoinConfirmation(guildName, requirements, button) {
+const modal = document.createElement('div');
+modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+modal.innerHTML = `
+<div class="bg-gradient-to-b from-gray-900 to-black p-6 rounded-lg border-2 border-amber-900 max-w-md w-full mx-4">
+<h3 class="text-xl font-bold text-amber-300 mb-4">Join ${guildName}</h3>
+<p class="text-gray-300 mb-2">Requirements: ${requirements}</p>
+<p class="text-gray-300 mb-6">Are you sure you want to join ${guildName}?</p>
+<div class="flex justify-end space-x-4">
+<button class="medieval-button px-4 py-2 rounded-button" id="cancelJoin">Cancel</button>
+<button class="join-button px-4 py-2 rounded-button" id="confirmJoin">Confirm</button>
+</div>
+</div>
+`;
+document.body.appendChild(modal);
+// Handle modal actions
+document.getElementById('cancelJoin').addEventListener('click', () => {
+modal.remove();
+});
+document.getElementById('confirmJoin').addEventListener('click', () => {
+modal.remove();
+button.innerHTML = `
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-timer-line"></i>
+</div>
+<span>Pending Approval</span>
+`;
+button.classList.add('opacity-50', 'cursor-not-allowed');
+button.disabled = true;
+// Show success notification
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-900 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center';
+notification.innerHTML = `
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span>Join request sent to ${guildName}</span>
+`;
+document.body.appendChild(notification);
+// Remove notification after 3 seconds
+setTimeout(() => {
+notification.remove();
+}, 3000);
+});
+}
+// Chat input functionality
+const chatInput = document.querySelector('.chat-input');
+const sendButton = chatInput?.nextElementSibling;
+if (chatInput && sendButton) {
+const sendMessage = () => {
+const message = chatInput.value.trim();
+if (message) {
+const chatContainer = document.querySelector('.chat-container .scrollbar');
+const newMessage = document.createElement('div');
+newMessage.className = 'chat-message p-2 rounded mt-4';
+newMessage.innerHTML = `
+<div class="font-bold text-amber-300">You</div>
+<div>${message}</div>
+`;
+chatContainer.appendChild(newMessage);
+chatContainer.scrollTop = chatContainer.scrollHeight;
+chatInput.value = '';
+}
+};
+sendButton.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', function(e) {
+if (e.key === 'Enter') {
+sendMessage();
+}
+});
+}
+});
+</script>
+</body>
+</html>
