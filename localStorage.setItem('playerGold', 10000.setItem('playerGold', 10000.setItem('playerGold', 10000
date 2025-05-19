@@ -1,0 +1,1 @@
+localStorage.setItem('playerGold', 100000); // <--- reset gold to 100,000 (((CAN BE REMOVED IF I DONT WANT TO RESET THE GOLD)))
