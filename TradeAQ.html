@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mystic Artifacts - Adventure Quest Items</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2c3e50',secondary:'#ffd700'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+    main .bg-white {
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray */
+    border-color: rgba(200, 200, 200, 0.8); /* Optional: Adjust border color */
+}
+
+#marketplace-items .item-card .p-4.border-b.border-gray-200.bg-gray-50 {
+    background-color: rgba(107, 101, 101, 0.8); /* White with 80% opacity */
+}
+
+@keyframes pinkGlow {
+  0%, 100% { text-shadow: 0 0 5px #FF69B4, 0 0 10px #FF69B4; } /* Hot Pink */
+  50% { text-shadow: 0 0 10px #FF1493, 0 0 15px #FF1493; } /* Deep Pink */
+}
+
+/* Target the metadata in trade listings (time, username) */
+.item-card .text-sm.text-blue-400, /* Time Posted */
+.item-card .font-medium.text-pink-700 { /* Usernames */
+    color: white; /* Ensure base color is white */
+    animation: pinkGlow 2s infinite alternate; /* Apply the pink glow animation */
+}
+
+@keyframes flickerLight {
+  0% { 
+    color: #FFA500; /* Orange */
+    text-shadow: 0 0 5px #FF4500, 0 0 10px #FF6347; /* Light orange to red */
+  }
+  50% {
+    color: #FFD700; /* Yellow */
+    text-shadow: 0 0 5px #FFD700, 0 0 15px #FF8C00; /* Yellow to light orange */
+  }
+  100% {
+    color: #FFA500; /* Back to orange */
+    text-shadow: 0 0 5px #FF4500, 0 0 10px #FF6347; /* Light orange to red */
+  }
+}
+  @keyframes fieryBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+  @keyframes flameFlicker {
+  0%, 100% { text-shadow: 0 0 4px #ff4d00, 0 0 12px #ff4d00; }
+  50% { text-shadow: 0 0 8px #ff6600, 0 0 20px #ff2200; }
+}
+
+.legendaryFlicker-title {
+  font-size: 2.5rem; /* Adjust as necessary */
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+  animation: flickerLight 1.5s infinite alternate; /* Apply the flickering effect */
+}
+
+@keyframes darkBlueRedFire {
+  0% {
+    border-color: #add8e6;
+    box-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000;
+  }
+  50% {
+    border-color: #00bfff;
+    box-shadow: 0 0 10px #003366, 0 0 20px #003366, 0 0 30px #003366,
+                 0 0 5px #ff4500;
+  }
+  100% {
+    border-color: #add8e6;
+    box-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000;
+  }
+}
+
+/* Target the image container in Available Trades */
+#marketplace-items .item-card .h-48 {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+/* Target the images within the item cards in Available Trades */
+#marketplace-items .item-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 0;
+    border: 2px solid #add8e6; /* Initial border color (light blue) */
+    border-radius: 0; /* Remove rounded corners */
+    animation: darkBlueRedFire 2s infinite alternate; /* Apply the title animation */
+}
+
+/* Reset potential inline-block spacing on the parent */
+#marketplace-items .item-card .h-48::after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+@keyframes darkBlueRedFire {
+  0% {
+    text-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000; /* Subtle red glow */
+    color: #add8e6; /* Light blue base color */
+  }
+  50% {
+    text-shadow: 0 0 10px #003366, 0 0 20px #003366, 0 0 30px #003366,
+                 0 0 5px #ff4500; /* More prominent red glow */
+    color: #00bfff; /* Brighter blue for the fire */
+  }
+  100% {
+    text-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000; /* Subtle red glow */
+    color: #add8e6; /* Return to the base color */
+  }
+}
+
+.item-card h3.text-xl.font-bold.medieval-font {
+  animation: darkBlueRedFire 2s infinite alternate; /* Apply the animation */
+}
+
+@keyframes redOrangeFireBorder {
+  0% { border-color: red; box-shadow: 0 0 10px red; }
+  50% { border-color: orange; box-shadow: 0 0 20px orange; }
+  100% { border-color: red; box-shadow: 0 0 10px red; }
+}
+
+@keyframes lightRedGrayBorder {
+  0% { border-color: #ff69b4; box-shadow: 0 0 5px #ff69b4; } /* Light Red */
+  50% { border-color: #808080; box-shadow: 0 0 10px #808080; } /* Gray */
+  100% { border-color: #ff69b4; box-shadow: 0 0 5px #ff69b4; } /* Light Red */
+}
+
+#tradeModal {
+    background-color: rgba(0, 0, 0, 0.9); /* Black, a bit less transparent */
+    border: none; /* Remove border from the outer container */
+    color: white; /* Ensure text is visible on black background */
+}
+
+#tradeModal .bg-white {
+    background-color: rgba(0, 0, 0, 0.9); /* Match modal background */
+    border: 5px solid #ff6971; /* Initial thicker light red border */
+    animation: lightRedGrayBorder 5s infinite linear; /* Apply the slow gradient-like animation */
+    box-shadow: 0 0 5px #e21a1a; /* Initial light red glow */
+    padding: 16px; /* Add some padding inside the border */
+}
+
+#tradeModal .h-40 img, /* Target images in the modal's preview areas */
+#tradeModal #theirItemImage /* Target their item image */
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 0;
+    border: none; /* Reset any potential borders */
+}
+
+/* Ensure the image container has the correct size and positioning */
+#tradeModal .h-40 {
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes darkBlueRedFire {
+  0% {
+    text-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000;
+    color: #add8e6;
+  }
+  50% {
+    text-shadow: 0 0 10px #003366, 0 0 20px #003366, 0 0 30px #003366,
+                 0 0 5px #ff4500;
+    color: #00bfff;
+  }
+  100% {
+    text-shadow: 0 0 5px #001f3f, 0 0 10px #001f3f, 0 0 15px #001f3f,
+                 0 0 2px #8b0000;
+    color: #add8e6;
+  }
+}
+
+/* Apply to item titles in general */
+.item-card h3.text-xl.font-bold.medieval-font {
+  animation: darkBlueRedFire 2s infinite alternate;
+}
+
+/* Apply specifically to the item names in the Propose Trade modal */
+#tradeModal #theirItemName,
+#tradeModal #yourItemName {
+  animation: darkBlueRedFire 2s infinite alternate;
+}
+
+
+  #bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.5; /* adjust transparency */
+}
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Cinzel', serif;
+  background:  linear-gradient(-45deg, #531a00, #1a0730, #000000, #410200),
+  url('Texture.jpg') no-repeat center center fixed;  /* Bottom layer: Transparent Image */
+  background-size: 400% 400%;
+  animation: fieryBackground 10s ease infinite;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+}
+.medieval-font {
+font-family: 'MedievalSharp', cursive;
+}
+.rarity-common { color: #808080; }
+.rarity-uncommon { color: #1eff00; }
+.rarity-rare { color: #0070dd; }
+.rarity-epic { color: #a335ee; }
+.rarity-legendary { color: #ff8000; }
+.rarity-godly { color: #FF69B4; }  /* ← Added godly rarity */
+.item-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Removed opacity from transition */
+}
+
+/* Target the images within the item cards in Available Trades */
+#marketplace-items .item-card img {
+    display: block;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.8), /* Inner glow */
+                0 0 20px rgba(255, 153, 0, 0.6), /* Medium glow */
+                0 0 30px rgba(255, 102, 0, 0.4); /* Outer glow */
+}
+.item-card h3.text-xl.font-bold.medieval-font {
+    color: white;
+}
+
+
+/* Target the item descriptions */
+.item-card p.text-gray-700.text-sm.mb-3 {
+    color: white;
+}
+
+/* Target the placeholder text in the search inputs */
+input::placeholder {
+    color: lightgray; /* Or any light color for placeholder */
+}
+
+/* Target the actual text inside the search inputs */
+.search-input {
+    color: white;
+}
+/* Target the "5 items" and "28 listings" counts */
+main .bg-gray-100.px-3.py-1.rounded-full.text-sm.font-medium.text-gray-700 {
+    color: black;
+    font-weight: bold;
+}
+
+/* Target the placeholder text in the search inputs */
+input::placeholder {
+    color: lightgray; /* Or any light color for placeholder */
+}
+
+/* Target the actual text inside the search inputs */
+.search-input {
+    color: white;
+}
+
+/* Target the metadata in trade listings (time, username) */
+.item-card .text-sm.text-gray-500,
+.item-card .font-medium.text-gray-700 {
+    color: white;
+}
+
+/* Target "Looking For" headings in trade listings */
+.item-card h4.font-semibold.text-gray-800.mb-1 {
+    color: white;
+}
+
+/* Target "Looking For" descriptions in trade listings */
+.item-card .text-sm.text-gray-700 {
+    color: white;
+}
+.buy-btn {
+background-color: #4CAF50;
+}
+.trade-btn {
+background-color: #3498db;
+}
+.nav-item {
+position: relative;
+}
+.nav-item::after {
+content: "";
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -5px;
+left: 0;
+background-color: #ffd700;
+transition: width 0.3s ease;
+}
+.nav-item:hover::after {
+width: 100%;
+}
+.active::after {
+width: 100%;
+}
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+.item-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.chat-container {
+transition: height 0.3s ease;
+}
+.chat-toggle {
+transition: all 0.3s ease;
+}
+.admin-message {
+color: gold;
+}
+.trade-button {
+transition: all 0.2s ease;
+}
+.trade-button:hover {
+background-color: #2980b9;
+}
+.search-input:focus {
+outline: none;
+box-shadow: 0 0 0 2px rgba(255, 128, 0, 0.3);
+}
+</style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="Guts.mp4" type="video/mp4" />
+        
+    </video>
+    <header class="relative h-20 overflow-hidden">
+        <!-- Background video -->
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src="your-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="container mx-auto px-4 py-6">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center">
+              <!-- Icon image -->
+              <img src="ShieldGIFFY-unscreen.gif" alt="Shield Icon" class="w-16 h-16 mr-3">
+              <h1 class="text-3xl font-bold medieval-font mr-2" style="animation: flickerLight 2s infinite alternate;">DoomForge HQ</h1>
+            </div>
+<div class="flex items-center">
+  <div class="bg-black bg-opacity-50 rounded-lg px-4 py-2 mr-6">
+  <span class="text-yellow-400 font-bold" id="playerGold">100,000 Gold</span>
+  </div>
+<nav class="flex space-x-8">
+<a href="HomeAQ.html" class="nav-item text-white hover:text-secondary">Home</a>
+<a href="ShopAQ.html" class="nav-item text-white hover:text-secondary">Shop</a>
+<a href="TradeAQ.html" class="nav-item text-white hover:text-secondary active">Trade</a>
+
+</nav>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-8 max-w-7xl">
+    <h2 class="legendaryFlicker-title text-6xl text-center mb-8">Trading Marketplace</h2>
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- Left Sidebar - User's Inventory -->
+<div class="w-full lg:w-1/3 bg-white rounded-lg shadow-md p-6 border border-gray-200">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-2xl font-bold text-black">My Items</h2>
+<span class="bg-gray-100 px-3 py-1 rounded-full text-sm font-medium text-gray-700">5 items</span>
+</div>
+<div class="mb-4">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" id="inventory-search" class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 text-sm" placeholder="Search your items...">
+</div>
+</div>
+<div class="overflow-y-auto max-h-[600px] pr-1" id="inventory-items">
+<!-- Inventory Item 1 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Dragon Slayer Sword">
+<div class="h-40 bg-gray-900 relative overflow-hidden">
+<img src="Dragon Slayer.jpg" alt="Dragon Slayer Sword" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold medieval-font">Dragon Slayer Sword</h3>
+<p class="rarity-legendary font-semibold mb-2">Legendary</p>
+<p class="text-gray-700 text-sm mb-3">A mighty blade forged to slay dragons. Deals extra damage to draconic creatures.</p>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 w-full !rounded-button whitespace-nowrap">Unable To Trade</button>
+</div>
+</div>
+<!-- Inventory Item 2 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Godslayer Axe">
+<div class="h-40 bg-gray-900 relative overflow-hidden">
+<img src="Light Decimator.jpg" alt="Godslayer Axe" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class=" text-xl font-bold medieval-font">Light Decimator</h3>
+<p class="rarity-godly font-semibold mb-2">Godly</p>
+<p class="text-gray-700 text-sm mb-3">An ancient weapon said to have killed a god. Ignores 50% of enemy armor.</p>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 w-full !rounded-button whitespace-nowrap">Unable To Trade</button>
+</div>
+</div>
+<!-- Inventory Item 3 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Shadowweave Cloak">
+<div class="h-40 bg-gray-900 relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=dark%2520flowing%2520cloak%2520with%2520shadowy%2520tendrils%2520and%2520purple%2520energy%2520emanating%2520from%2520the%2520edges%2520against%2520dark%2520background%2520fantasy%2520garment%2520with%2520mysterious%2520aura%2520and%2520magical%2520patterns%2520woven%2520into%2520the%2520fabric%2520highly%2520detailed&width=400&height=250&seq=13&orientation=landscape" alt="Shadowweave Cloak" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold medieval-font">Shadowweave Cloak</h3>
+<p class="rarity-epic font-semibold mb-2">Epic</p>
+<p class="text-gray-700 text-sm mb-3">A cloak woven from shadow essence. Grants stealth and 15% movement speed.</p>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 w-full !rounded-button whitespace-nowrap">Unable To Trade</button>
+</div>
+</div>
+<!-- Inventory Item 4 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Phoenix Feather Talisman">
+<div class="h-40 bg-gray-900 relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=glowing%2520red%2520and%2520orange%2520feather%2520talisman%2520with%2520gold%2520filigree%2520frame%2520and%2520small%2520flames%2520emanating%2520from%2520the%2520edges%2520against%2520dark%2520background%2520fantasy%2520magical%2520item%2520with%2520intricate%2520details%2520and%2520fire%2520motifs%2520highly%2520detailed&width=400&height=250&seq=14&orientation=landscape" alt="Phoenix Feather Talisman" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold medieval-font">Phoenix Feather Talisman</h3>
+<p class="rarity-rare font-semibold mb-2">Rare</p>
+<p class="text-gray-700 text-sm mb-3">A talisman containing a phoenix feather. Resurrects the wearer once upon death.</p>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 w-full !rounded-button whitespace-nowrap">Unable To Trade</button>
+</div>
+</div>
+<!-- Inventory Item 5 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Moonsilver Bracers">
+<div class="h-40 bg-gray-900 relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=silver%2520arm%2520bracers%2520with%2520blue%2520moonstone%2520gems%2520and%2520intricate%2520lunar%2520patterns%2520etched%2520into%2520the%2520metal%2520against%2520dark%2520background%2520fantasy%2520armor%2520piece%2520with%2520soft%2520blue%2520glow%2520and%2520detailed%2520craftsmanship%2520highly%2520detailed&width=400&height=250&seq=15&orientation=landscape" alt="Moonsilver Bracers" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold medieval-font">Moonsilver Bracers</h3>
+<p class="rarity-uncommon font-semibold mb-2">Uncommon</p>
+<p class="text-gray-700 text-sm mb-3">Bracers forged from moonsilver. Increases spell potency during night hours.</p>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 w-full !rounded-button whitespace-nowrap">Unable To Trade</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Content - Trading Marketplace -->
+<div class="w-full lg:w-2/3 bg-white rounded-lg shadow-md p-6 border border-gray-200">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-2xl font-bold text-black">Available Trades</h2>
+<span class="bg-gray-100 px-3 py-1 rounded-full text-sm font-medium text-gray-700">28 listings</span>
+</div>
+<div class="mb-6">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" id="marketplace-search" class="search-input w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 text-sm" placeholder="Search trades...">
+</div>
+</div>
+<div class="overflow-y-auto max-h-[600px] pr-1" id="marketplace-items">
+<!-- Trade Listing 1 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Crown of Dominion">
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex justify-between items-center">
+<span class="text-sm text-black">Posted 5 minutes ago</span>
+<span class="font-medium text-pink-700">SirLancelot</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 h-48 bg-gray-900 relative overflow-hidden">
+<img src="Crown.jpg" alt="Crown of Dominion" class="w-full h-full object-cover object-center">
+</div>
+<div class="md:w-2/3 p-4">
+<h3 class="text-xl font-bold medieval-font">Crown of Dominion</h3>
+<p class="rarity-godly font-semibold mb-2">Godly</p>
+<p class="text-gray-700 text-sm mb-4">A legendary crown said to have been worn by the God-King Azaroth. Grants the wearer enhanced charisma and the ability to command lesser beings.</p>
+<div class="mb-4">
+<h4 class="font-semibold text-gray-800 mb-1">Looking For:</h4>
+<p class="text-sm text-gray-700">Amulet of Eternal Flame or Thunderlord's Warhammer</p>
+</div>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 !rounded-button whitespace-nowrap">Propose Trade</button>
+</div>
+</div>
+</div>
+<!-- Trade Listing 2 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Amulet of Eternal Flame">
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex justify-between items-center">
+<span class="text-sm text-black">Posted 12 minutes ago</span>
+<span class="font-medium text-pink-700">ElderMage</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 h-48 bg-gray-900 relative overflow-hidden">
+<img src="Amulet Of Eternal Flame.jpg" alt="Amulet of Eternal Flame" class="w-full h-full object-cover object-top">
+</div>
+<div class="md:w-2/3 p-4">
+<h3 class="text-xl font-bold medieval-font">Amulet of Eternal Flame</h3>
+<p class="rarity-godly font-semibold mb-2">Godly</p>
+<p class="text-gray-700 text-sm mb-4">An ancient amulet containing the essence of a fire elemental. Grants immunity to fire damage and enhances fire-based spells by 25%.</p>
+<div class="mb-4">
+<h4 class="font-semibold text-gray-800 mb-1">Looking For:</h4>
+<p class="text-sm text-gray-700">Robes of the Archmage or Shadowstrike Daggers</p>
+</div>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 !rounded-button whitespace-nowrap">Propose Trade</button>
+</div>
+</div>
+</div>
+<!-- Trade Listing 3 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Godslayer">
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex justify-between items-center">
+<span class="text-sm text-black">Posted 27 minutes ago</span>
+<span class="font-medium text-pink-700">ShadowBlade</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 h-48 bg-gray-900 relative overflow-hidden">
+<img src="Godslayer.jpg" alt="Godslayer" class="w-full h-full object-cover object-top">
+</div>
+<div class="md:w-2/3 p-4">
+<h3 class="text-xl font-bold medieval-font">Godslayer</h3>
+<p class="rarity-godly font-semibold mb-2">Godly</p>
+<p class="text-gray-700 text-sm mb-4">An ancient weapon said to have killed a god. Ignores 50% of enemy armor and deals bonus damage against divine beings.</p>
+<div class="mb-4">
+<h4 class="font-semibold text-gray-800 mb-1">Looking For:</h4>
+<p class="text-sm text-gray-700">Crown of Dominion + 50,000 Gold</p>
+</div>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 !rounded-button whitespace-nowrap">Propose Trade</button>
+</div>
+</div>
+</div>
+<!-- Trade Listing 4 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Dragonhide Boots">
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex justify-between items-center">
+<span class="text-sm text-black">Posted 35 minutes ago</span>
+<span class="font-medium text-pink-700">DragonHunter</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 h-48 bg-gray-900 relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=leather%2520boots%2520made%2520from%2520dragon%2520scales%2520with%2520small%2520flames%2520emanating%2520from%2520the%2520soles%2520against%2520dark%2520background%2520fantasy%2520footwear%2520with%2520intricate%2520scale%2520patterns%2520and%2520metal%2520accents%2520highly%2520detailed&width=300&height=300&seq=19&orientation=squarish" alt="Dragonhide Boots" class="w-full h-full object-cover object-top">
+</div>
+<div class="md:w-2/3 p-4">
+<h3 class="text-xl font-bold medieval-font">Dragonhide Boots</h3>
+<p class="rarity-rare font-semibold mb-2">Rare</p>
+<p class="text-gray-700 text-sm mb-4">Boots crafted from the hide of a fire dragon. Grants fire resistance and leaves fiery footprints when running.</p>
+<div class="mb-4">
+<h4 class="font-semibold text-gray-800 mb-1">Looking For:</h4>
+<p class="text-sm text-gray-700">Any epic or higher weapon</p>
+</div>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 !rounded-button whitespace-nowrap">Propose Trade</button>
+</div>
+</div>
+</div>
+<!-- Trade Listing 5 -->
+<div class="item-card mb-4 border border-gray-200 rounded-lg overflow-hidden" data-item-name="Void Crystal Staff">
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex justify-between items-center">
+<span class="text-sm text-black">Posted 42 minutes ago</span>
+<span class="font-medium text-pink-700">VoidWalker</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 h-48 bg-gray-900 relative overflow-hidden">
+<img src="Time Void.jpg" alt="Void Crystal Staff" class="w-full h-full object-cover object-top">
+</div>
+<div class="md:w-2/3 p-4">
+<h3 class="text-xl font-bold medieval-font">Time Void Staff</h3>
+<p class="rarity-epic font-semibold mb-2">Epic</p>
+<p class="text-gray-700 text-sm mb-4">A staff containing a shard of the void. Spells cast with this staff have a chance to teleport enemies to a random location and stop the time for 5 seconds.</p>
+<div class="mb-4">
+<h4 class="font-semibold text-gray-800 mb-1">Looking For:</h4>
+<p class="text-sm text-gray-700">Phoenix Feather Talisman + 5,000 Gold</p>
+</div>
+<button class="trade-button bg-blue-500 text-white px-4 py-2 !rounded-button whitespace-nowrap">Propose Trade</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Chat -->
+<div class="fixed bottom-0 left-0 z-50 w-80">
+<!-- Chat Toggle Bar -->
+<div class="chat-toggle bg-gray-800 text-white px-4 py-2 rounded-t-lg flex justify-between items-center cursor-pointer">
+<span>Global Chat</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-up-s-line" id="chat-toggle-icon"></i>
+</div>
+</div>
+<!-- Chat Container -->
+<div class="chat-container h-0 overflow-hidden bg-gray-800 bg-opacity-90 rounded-t-lg transition-all duration-300">
+<div class="p-4 h-64 overflow-y-auto" id="chat-messages">
+<div class="mb-2">
+<span class="admin-message">(ADMIN)</span>
+<span class="text-white">Drexyl: Welcome to the trading marketplace!</span>
+</div>
+<div class="mb-2">
+<span class="text-green-400">ElderMage: </span>
+<span class="text-white">Looking for Shadowstrike Daggers, offering good trades!</span>
+</div>
+<div class="mb-2">
+<span class="text-blue-400">SirLancelot: </span>
+<span class="text-white">Anyone have a Crown of Dominion they're willing to trade?</span>
+</div>
+<div class="mb-2">
+<span class="text-purple-400">ShadowBlade: </span>
+<span class="text-white">I have a Godslayer for trade, but it'll cost you!</span>
+</div>
+<div class="mb-2">
+<span class="admin-message">(ADMIN)</span>
+<span class="text-white">Drexyl: Remember to be fair in your trades!</span>
+</div>
+</div>
+<div class="p-2 border-t border-gray-700">
+<div class="flex">
+<input type="text" id="chat-input" class="search-input flex-1 bg-gray-700 text-white border-none rounded-l-lg px-3 py-2 text-sm" placeholder="Type your message...">
+<button id="send-message" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-send-plane-fill"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Trade Proposal Modal -->
+<div id="tradeModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 hidden">
+<div class="bg-white rounded-lg p-6 max-w-3xl w-full mx-4 relative">
+<button id="closeTradeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+<h3 class="text-2xl font-bold mb-6 text-center">Propose Trade</h3>
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Their Item -->
+<!-- Their Item with Transparent Video Background -->
+<div class="flex-1 relative rounded-lg overflow-hidden border border-gray-200">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="Wave.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Overlay to soften video -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+  
+    <!-- Content on top of video -->
+    <div class="relative z-20 p-4 text-white">
+      <h4 class="text-lg font-bold mb-3 text-center">Their Offer</h4>
+      <div class="rounded-lg p-4 mb-4 bg-transparent">
+        <div class="h-40 relative overflow-hidden mb-3">
+          <img id="theirItemImage" src="" alt="Their Item" class="w-full h-full object-cover object-top rounded">
+        </div>
+        <h5 id="theirItemName" class="text-xl font-bold medieval-font mb-1"></h5>
+        <p id="theirItemRarity" class="font-semibold mb-2"></p>
+        <p id="theirItemDesc" class="text-sm"></p>
+      </div>
+    </div>
+  </div>
+  
+<!-- Your Items -->
+<div class="flex-1 border border-gray-200 rounded-lg p-4">
+<h4 class="text-lg font-bold mb-3 text-center">Your Offer</h4>
+<div class="mb-3">
+<select id="yourItemSelect" class="w-full p-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 pr-8">
+<option value="" disabled selected>Select an item to offer</option>
+<option value="dragonSlayer">Dragon Slayer Sword</option>
+<option value="godslayer">Godslayer Axe</option>
+<option value="shadowweave">Shadowweave Cloak</option>
+<option value="phoenix">Phoenix Feather Talisman</option>
+<option value="moonsilver">Moonsilver Bracers</option>
+</select>
+</div>
+<!-- Video Background Item Preview -->
+<div id="selectedItemPreview" class="relative rounded-lg overflow-hidden hidden">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="FieryBG.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Overlay to improve contrast -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+  
+    <!-- Content Layer -->
+    <div class="relative z-20 p-4 text-white">
+      <div class="h-40 relative overflow-hidden mb-3">
+        <img id="yourItemImage" src="" alt="Your Item" class="w-full h-full object-cover object-top rounded">
+      </div>
+      <h5 id="yourItemName" class="text-xl font-bold medieval-font mb-1"></h5>
+      <p id="yourItemRarity" class="font-semibold mb-2"></p>
+      <p id="yourItemDesc" class="text-sm"></p>
+    </div>
+  </div>
+<div class="mt-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Additional Gold Offer</label>
+<div class="flex items-center">
+<input type="number" min="0" step="100" class="w-full p-2 border border-gray-300 rounded-l-lg bg-gray-50 text-gray-900" placeholder="0">
+<span class="bg-gray-200 px-3 py-2 rounded-r-lg text-gray-700">Gold</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-center">
+<button id="cancelTradeButton" class="bg-gray-500 text-white py-2 px-6 !rounded-button hover:bg-gray-600 transition mr-4 whitespace-nowrap">Cancel</button>
+<button id="confirmTradeButton" class="bg-blue-500 text-white py-2 px-6 !rounded-button hover:bg-blue-600 transition whitespace-nowrap">Send Trade Offer</button>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-message');
+    const chatMessages = document.getElementById('chat-messages');
+    const playerName = 'Drexyl'; // Replace with actual dynamic name if needed
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'mb-2';
+
+            if (playerName === 'Drexyl') {
+                messageElement.innerHTML = `
+                    <span class="admin-message">(ADMIN)</span>
+                    <span class="text-white">${playerName}: </span>
+                    <span class="text-white">${message}</span>
+                `;
+            } else {
+                messageElement.innerHTML = `
+                    <span class="text-white">${playerName}: </span>
+                    <span class="text-white">${message}</span>
+                `;
+            }
+
+            chatMessages.appendChild(messageElement);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+sendButton.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+// Chat toggle functionality
+const chatToggle = document.querySelector('.chat-toggle');
+const chatContainer = document.querySelector('.chat-container');
+const chatToggleIcon = document.getElementById('chat-toggle-icon');
+chatToggle.addEventListener('click', function() {
+if (chatContainer.classList.contains('h-0')) {
+chatContainer.classList.remove('h-0');
+chatContainer.classList.add('h-auto');
+chatToggleIcon.classList.remove('ri-arrow-up-s-line');
+chatToggleIcon.classList.add('ri-arrow-down-s-line');
+} else {
+chatContainer.classList.add('h-0');
+chatContainer.classList.remove('h-auto');
+chatToggleIcon.classList.add('ri-arrow-up-s-line');
+chatToggleIcon.classList.remove('ri-arrow-down-s-line');
+}
+});
+// Search functionality for inventory
+const inventorySearch = document.getElementById('inventory-search');
+const inventoryItems = document.querySelectorAll('#inventory-items .item-card');
+inventorySearch.addEventListener('input', function() {
+const searchTerm = this.value.toLowerCase();
+inventoryItems.forEach(item => {
+const itemName = item.getAttribute('data-item-name').toLowerCase();
+if (itemName.includes(searchTerm)) {
+item.style.display = 'block';
+} else {
+item.style.display = 'none';
+}
+});
+});
+// Search functionality for marketplace
+const marketplaceSearch = document.getElementById('marketplace-search');
+const marketplaceItems = document.querySelectorAll('#marketplace-items .item-card');
+marketplaceSearch.addEventListener('input', function() {
+const searchTerm = this.value.toLowerCase();
+let foundItems = false;
+marketplaceItems.forEach(item => {
+const itemName = item.getAttribute('data-item-name').toLowerCase();
+if (itemName.includes(searchTerm)) {
+item.style.display = 'block';
+foundItems = true;
+} else {
+item.style.display = 'none';
+}
+});
+// Show "no items found" message if needed
+let noItemsMessage = document.getElementById('no-items-message');
+if (!foundItems && searchTerm !== '') {
+if (!noItemsMessage) {
+noItemsMessage = document.createElement('div');
+noItemsMessage.id = 'no-items-message';
+noItemsMessage.className = 'text-center py-8 text-gray-500';
+noItemsMessage.textContent = 'No items found matching your search.';
+document.getElementById('marketplace-items').appendChild(noItemsMessage);
+}
+noItemsMessage.style.display = 'block';
+} else if (noItemsMessage) {
+noItemsMessage.style.display = 'none';
+}
+});
+// Trade modal functionality
+const tradeButtons = document.querySelectorAll('.trade-button');
+const tradeModal = document.getElementById('tradeModal');
+const closeTradeModal = document.getElementById('closeTradeModal');
+const cancelTradeButton = document.getElementById('cancelTradeButton');
+const confirmTradeButton = document.getElementById('confirmTradeButton');
+const yourItemSelect = document.getElementById('yourItemSelect');
+const selectedItemPreview = document.getElementById('selectedItemPreview');
+// Item data for the modal
+const itemData = {
+"Crown of Dominion": {
+image: "Crown.jpg",
+rarity: "Godly",
+rarityClass: "rarity-godly",
+description: "A legendary crown said to have been worn by the God-King Azaroth. Grants the wearer enhanced charisma and the ability to command lesser beings."
+},
+"Amulet of Eternal Flame": {
+image: "amulet of eternal flame.jpg",
+rarity: "Godly",
+rarityClass: "rarity-godly",
+description: "An ancient amulet containing the essence of a fire elemental. Grants immunity to fire damage and enhances fire-based spells by 25%."
+},
+"Godslayer": {
+image: "Godslayer.jpg",
+rarity: "Godly",
+rarityClass: "rarity-godly",
+description: "An ancient weapon said to have killed a god. Ignores 50% of enemy armor and deals bonus damage against divine beings."
+},
+"Dragonhide Boots": {
+image: "https://readdy.ai/api/search-image?query=leather%2520boots%2520made%2520from%2520dragon%2520scales%2520with%2520small%2520flames%2520emanating%2520from%2520the%2520soles%2520against%2520dark%2520background%2520fantasy%2520footwear%2520with%2520intricate%2520scale%2520patterns%2520and%2520metal%2520accents%2520highly%2520detailed&width=300&height=300&seq=19&orientation=squarish",
+rarity: "Godly",
+rarityClass: "rarity-godly",
+description: "Boots crafted from the hide of a fire dragon. Grants fire resistance and leaves fiery footprints when running."
+},
+"Void Crystal Staff": {
+image: "Time Void.jpg",
+rarity: "Epic",
+rarityClass: "rarity-epic",
+description: "A staff containing a shard of the void. Spells cast with this staff have a chance to teleport enemies to a random location."
+}
+};
+// Your inventory item data
+const yourItems = {
+dragonSlayer: {
+name: "Dragon Slayer Sword",
+image: "Dragon Slayer.jpg",
+rarity: "Legendary",
+rarityClass: "rarity-legendary",
+description: "A mighty blade forged to slay dragons. Deals extra damage to draconic creatures."
+},
+godslayer: {
+name: "Godslayer Axe",
+image: "Light Decimator.jpg",
+rarity: "Godly",
+rarityClass: "rarity-godly",
+description: "An ancient weapon said to have killed a god. Ignores 50% of enemy armor."
+},
+shadowweave: {
+name: "Shadowweave Cloak",
+image: "https://readdy.ai/api/search-image?query=dark%2520flowing%2520cloak%2520with%2520shadowy%2520tendrils%2520and%2520purple%2520energy%2520emanating%2520from%2520the%2520edges%2520against%2520dark%2520background%2520fantasy%2520garment%2520with%2520mysterious%2520aura%2520and%2520magical%2520patterns%2520woven%2520into%2520the%2520fabric%2520highly%2520detailed&width=400&height=250&seq=13&orientation=landscape",
+rarity: "Epic",
+rarityClass: "rarity-epic",
+description: "A cloak woven from shadow essence. Grants stealth and 15% movement speed."
+},
+phoenix: {
+name: "Phoenix Feather Talisman",
+image: "https://readdy.ai/api/search-image?query=glowing%2520red%2520and%2520orange%2520feather%2520talisman%2520with%2520gold%2520filigree%2520frame%2520and%2520small%2520flames%2520emanating%2520from%2520the%2520edges%2520against%2520dark%2520background%2520fantasy%2520magical%2520item%2520with%2520intricate%2520details%2520and%2520fire%2520motifs%2520highly%2520detailed&width=400&height=250&seq=14&orientation=landscape",
+rarity: "Rare",
+rarityClass: "rarity-rare",
+description: "A talisman containing a phoenix feather. Resurrects the wearer once upon death."
+},
+moonsilver: {
+name: "Moonsilver Bracers",
+image: "https://readdy.ai/api/search-image?query=silver%2520arm%2520bracers%2520with%2520blue%2520moonstone%2520gems%2520and%2520intricate%2520lunar%2520patterns%2520etched%2520into%2520the%2520metal%2520against%2520dark%2520background%2520fantasy%2520armor%2520piece%2520with%2520soft%2520blue%2520glow%2520and%2520detailed%2520craftsmanship%2520highly%2520detailed&width=400&height=250&seq=15&orientation=landscape",
+rarity: "Uncommon",
+rarityClass: "rarity-uncommon",
+description: "Bracers forged from moonsilver. Increases spell potency during night hours."
+}
+};
+tradeButtons.forEach(button => {
+button.addEventListener('click', function() {
+const card = this.closest('.item-card');
+const itemName = card.getAttribute('data-item-name');
+const itemInfo = itemData[itemName];
+if (itemInfo) {
+document.getElementById('theirItemImage').src = itemInfo.image;
+document.getElementById('theirItemName').textContent = itemName;
+document.getElementById('theirItemRarity').textContent = itemInfo.rarity;
+document.getElementById('theirItemRarity').className = itemInfo.rarityClass + ' font-semibold mb-2';
+document.getElementById('theirItemDesc').textContent = itemInfo.description;
+tradeModal.classList.remove('hidden');
+}
+});
+});
+yourItemSelect.addEventListener('change', function() {
+const selectedItem = yourItems[this.value];
+if (selectedItem) {
+document.getElementById('yourItemImage').src = selectedItem.image;
+document.getElementById('yourItemName').textContent = selectedItem.name;
+document.getElementById('yourItemRarity').textContent = selectedItem.rarity;
+document.getElementById('yourItemRarity').className = selectedItem.rarityClass + ' font-semibold mb-2';
+document.getElementById('yourItemDesc').textContent = selectedItem.description;
+selectedItemPreview.classList.remove('hidden');
+} else {
+selectedItemPreview.classList.add('hidden');
+}
+});
+closeTradeModal.addEventListener('click', function() {
+tradeModal.classList.add('hidden');
+resetTradeModal();
+});
+cancelTradeButton.addEventListener('click', function() {
+tradeModal.classList.add('hidden');
+resetTradeModal();
+});
+confirmTradeButton.addEventListener('click', function() {
+// Show success message
+const successMessage = document.createElement('div');
+successMessage.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70';
+successMessage.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4 text-center">
+<p class="text-xl text-green-600 mb-4">Trade Offer Sent!</p>
+<p class="mb-4 text-black">Your trade offer has been sent. You will be notified when the other player responds.</p>
+<button class="bg-green-500 text-white py-2 px-4 !rounded-button hover:bg-green-600 transition">Close</button>
+</div>
+`;
+document.body.appendChild(successMessage);
+successMessage.querySelector('button').onclick = function() {
+successMessage.remove();
+};
+tradeModal.classList.add('hidden');
+resetTradeModal();
+});
+function resetTradeModal() {
+yourItemSelect.value = '';
+selectedItemPreview.classList.add('hidden');
+}
+// Close modal when clicking outside
+tradeModal.addEventListener('click', function(e) {
+if (e.target === tradeModal) {
+tradeModal.classList.add('hidden');
+resetTradeModal();
+}
+});
+// Close modal with ESC key
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape' && !tradeModal.classList.contains('hidden')) {
+tradeModal.classList.add('hidden');
+resetTradeModal();
+}
+});
+});
+
+let playerGold = parseInt(localStorage.getItem('playerGold')) || 100000;
+    const playerGoldDisplay = document.getElementById('playerGold');
+localStorage.setItem('playerGold', 100000); // <--- reset gold to 100,000 (((CAN BE REMOVED IF I DONT WANT TO RESET THE GOLD)))
+    function updateGoldDisplay() {
+        playerGoldDisplay.textContent = `${playerGold.toLocaleString()} Gold`;
+        localStorage.setItem('playerGold', playerGold);
+    }
+    updateGoldDisplay();
+    const modal = document.getElementById('purchaseModal');
+    const modalItemName = document.getElementById('modalItemName');
+    const modalItemImage = document.getElementById('modalItemImage');
+    const modalItemPrice = document.getElementById('modalItemPrice');
+    const modalTotalPrice = document.getElementById('modalTotalPrice');
+    const quantityInput = document.getElementById('quantityInput');
+    const closeModal = document.getElementById('closeModal');
+    const confirmPurchase = document.getElementById('confirmPurchase');
+    const cancelPurchase = document.getElementById('cancelPurchase');
+    const decreaseQuantity = document.getElementById('decreaseQuantity');
+    const increaseQuantity = document.getElementById('increaseQuantity');
+
+    let currentPrice = 0;
+
+    function updateTotal() {
+        const quantity = parseInt(quantityInput.value);
+        const total = currentPrice * quantity;
+        modalTotalPrice.textContent = `${total} Gold`;
+    }
+
+    function showModal(itemCard) {
+        const itemName = itemCard.querySelector('h3').textContent;
+        const itemImage = itemCard.querySelector('img').src;
+        const priceText = itemCard.querySelector('.text-primary').textContent;
+        currentPrice = parseInt(priceText.replace(/[^0-9]/g, ''));
+
+        modalItemName.textContent = itemName;
+        modalItemImage.src = itemImage;
+        modalItemPrice.textContent = priceText;
+        quantityInput.value = 1;
+        updateTotal();
+
+        // Ensure other trade modals are closed
+        document.getElementById('tradeModal').classList.add('hidden');
+        document.getElementById('offerTradeModal').classList.add('hidden');
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function hideModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    const buyButtons = document.querySelectorAll('.buy-btn');
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemCard = this.closest('.item-card');
+            showModal(itemCard);
+        });
+    });
+
+    decreaseQuantity.addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+            updateTotal();
+        }
+    });
+
+    increaseQuantity.addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+        updateTotal();
+    });
+
+    closeModal.addEventListener('click', hideModal);
+    cancelPurchase.addEventListener('click', hideModal);
+    confirmPurchase.addEventListener('click', () => {
+        const itemName = modalItemName.textContent;
+        const quantity = parseInt(quantityInput.value);
+        const totalCost = currentPrice * quantity;
+
+        if (playerGold < totalCost) {
+            alert("You don't have enough gold to complete this purchase.");
+            return;
+        }
+
+        playerGold -= totalCost;
+        updateGoldDisplay();
+        hideModal();
+
+        const confirmationModal = document.createElement('div');
+        confirmationModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        confirmationModal.innerHTML = `
+            <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+                <h4 class="text-lg font-bold text-primary mb-4">Purchase Successful!</h4>
+                <p class="text-gray-600 mb-4">You have purchased ${quantity} ${itemName} for ${totalCost.toLocaleString()} Gold.</p>
+                <button class="w-full bg-primary text-white py-2 !rounded-button hover:bg-opacity-90">Close</button>
+            </div>
+        `;
+
+        document.body.appendChild(confirmationModal);
+        confirmationModal.querySelector('button').addEventListener('click', () => {
+            confirmationModal.remove();
+        });
+    });
+
+
+const tradeButtons = document.querySelectorAll('.trade-button');
+    const tradeModal = document.getElementById('tradeModal');
+    const closeTradeModal = document.getElementById('closeTradeModal');
+    const cancelTradeButton = document.getElementById('cancelTradeButton');
+    const confirmTradeButton = document.getElementById('confirmTradeButton');
+    const yourItemSelect = document.getElementById('yourItemSelect');
+    const selectedItemPreview = document.getElementById('selectedItemPreview');
+    const tradeRecipient = document.getElementById('tradeRecipient'); // Get the recipient input
+    const sendTradeButton = document.getElementById('sendTradeButton'); // Make sure your button has this ID
+    const proposeTradeForm = document.getElementById('proposeTradeForm'); // Assuming your form has this ID
+
+    // Initially disable the button
+    sendTradeButton.disabled = true;
+
+    function checkFormValidity() {
+        if (yourItemSelect.value !== '' && tradeRecipient.value.trim() !== '') {
+            sendTradeButton.disabled = false;
+        } else {
+            sendTradeButton.disabled = true;
+        }
+    }
+
+    yourItemSelect.addEventListener('change', checkFormValidity);
+    tradeRecipient.addEventListener('input', checkFormValidity);
+
+    checkFormValidity();
+
+    // Trade modal functionality
+    tradeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const itemName = button.closest('.item-card').getAttribute('data-item-name');
+            const item = itemData[itemName];
+
+            if (item) {
+                document.getElementById('theirItemImage').src = item.image;
+                document.getElementById('theirItemName').textContent = itemName;
+                document.getElementById('theirItemRarity').textContent = item.rarity;
+                document.getElementById('theirItemRarity').className = `font-semibold mb-2 ${item.rarityClass}`;
+                document.getElementById('theirItemDesc').textContent = item.description;
+
+                tradeModal.classList.remove('hidden');
+            }
+        });
+    });
+
+    closeTradeModal.addEventListener('click', () => {
+        tradeModal.classList.add('hidden');
+        resetTradeModal();
+    });
+
+    cancelTradeButton.addEventListener('click', function() {
+        tradeModal.classList.add('hidden');
+        resetTradeModal();
+    });
+
+    confirmTradeButton.addEventListener('click', function() {
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70';
+        successMessage.innerHTML = `
+            <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4 text-center">
+                <p class="text-xl text-green-600 mb-4">Trade Offer Sent!</p>
+                <p class="mb-4">Your trade offer has been sent. You will be notified when the other player responds.</p>
+                <button class="bg-green-500 text-white py-2 px-4 !rounded-button hover:bg-green-600 transition">Close</button>
+            </div>
+        `;
+        document.body.appendChild(successMessage);
+        successMessage.querySelector('button').onclick = function() {
+            successMessage.remove();
+        };
+        tradeModal.classList.add('hidden');
+        resetTradeModal();
+    });
+
+    function resetTradeModal() {
+        yourItemSelect.value = '';
+        selectedItemPreview.classList.add('hidden');
+    }
+
+    // Close modal when clicking outside
+    tradeModal.addEventListener('click', function(e) {
+        if (e.target === tradeModal) {
+            tradeModal.classList.add('hidden');
+            resetTradeModal();
+        }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !tradeModal.classList.contains('hidden')) {
+            tradeModal.classList.add('hidden');
+            resetTradeModal();
+        }
+    });
+
+    // OPTIONAL: Prevent form submission if the button is disabled
+    if (proposeTradeForm) {
+        proposeTradeForm.addEventListener('submit', function(event) {
+            if (sendTradeButton.disabled) {
+                event.preventDefault(); // Prevent the default form submission
+                alert('Please select an item to offer and enter the recipient\'s username.');
+            }
+        });
+    }
+
+    yourItemSelect.addEventListener('change', function() {
+        const selectedItemName = yourItemSelect.value;
+        if (selectedItemName) {
+            const item = yourItems[selectedItemName];
+            if (item) {
+                document.getElementById('yourItemImage').src = item.image;
+                document.getElementById('yourItemName').textContent = selectedItemName;
+                document.getElementById('yourItemRarity').textContent = item.rarity;
+                document.getElementById('yourItemRarity').className = `font-semibold mb-2 ${item.rarityClass}`;
+                document.getElementById('yourItemDesc').textContent = item.description;
+                selectedItemPreview.classList.remove('hidden');
+            } else {
+                selectedItemPreview.classList.add('hidden');
+            }
+        } else {
+            selectedItemPreview.classList.add('hidden');
+        }
+        checkFormValidity(); // Ensure button state is updated
+    });
+
+
+</script>
+</body>
+</html>
